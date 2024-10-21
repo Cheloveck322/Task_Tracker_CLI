@@ -1,7 +1,8 @@
 ﻿#include <iostream>
 #include <limits>
-#include "include/Task.h"
-#include "include/task_tracker_CLI.h"
+#include "Task.h"
+#include "task_tracker_CLI.h"
+#include "List.h"
 
 static void ignoreLine()
 {
@@ -10,7 +11,27 @@ static void ignoreLine()
 
 int main()
 {
+    List list{};
 
+    list.add("Buy groceries");
+
+    list.list();
+
+    list.update(1, "Buy grocerios and cool dinner");
+
+    list.add("Pay bills");
+
+    list.list();
+
+    list.mark(settings::in_progress, 1);
+
+    list.list();
+
+    list.mark(settings::done, 1);
+
+    list.list(settings::todo);
+
+    list.list();
 
     return 0;
 }

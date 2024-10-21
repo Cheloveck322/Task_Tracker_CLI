@@ -1,7 +1,7 @@
 #ifndef TASK_H
 #define TASK_H
 
-#include "include/task_tracker_CLI.h"
+#include "task_tracker_CLI.h"
 #include <string>
 
 class Task
@@ -9,11 +9,24 @@ class Task
 public:
     Task() = default;
 
-    Task(unsigned id, const std::string& descript, const settings::Status& status);
+    Task(const std::string& descript);
 
+    Task(const std::string& descript, const settings::Status& status);
+
+    void updateTask(const std::string& name);
+
+    void updateStatus(const settings::Status& status);
+
+    static unsigned& getID();
+
+    std::string& getDescript();
+
+    settings::Status& getStatus();
+
+    ~Task();
 
 private:
-    unsigned m_id{};
+    static inline unsigned m_id{ Task::getID() };
     std::string m_descript{};
     settings::Status m_status{};
 };
