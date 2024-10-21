@@ -29,7 +29,7 @@ int main()
 
     list.mark(settings::done, 1);
 
-    list.list(settings::todo);
+    list.remove(1);
 
     list.list();
 
