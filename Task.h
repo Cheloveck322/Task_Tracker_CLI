@@ -3,6 +3,7 @@
 
 #include "task_tracker_CLI.h"
 #include <string>
+#include <chrono>
 
 class Task
 {
@@ -23,12 +24,21 @@ public:
 
     settings::Status& getStatus();
 
+    bool getUpdated() const;
+
+    void printWhenCreated();
+
+    void printWhenUpdated();
+
     ~Task();
 
 private:
     static inline unsigned m_id{ Task::getID() };
     std::string m_descript{};
     settings::Status m_status{};
+    std::chrono::time_point<std::chrono::system_clock> m_createdAt{};
+    std::chrono::time_point<std::chrono::system_clock> m_updatedAt{};
+    bool m_updated{ false };
 };
 
 #endif

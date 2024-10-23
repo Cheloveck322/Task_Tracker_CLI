@@ -29,7 +29,10 @@ void List::list()
     {
         std::cout << "ID: " << element.first << '\n';
         std::cout << "task: " << element.second.getDescript() << '\n';
-        std::cout << "status: " << settings::status_name[element.second.getStatus()] << "\n\n";
+        std::cout << "status: " << settings::status_name[element.second.getStatus()] << '\n';
+        element.second.printWhenCreated();
+        if (element.second.getUpdated())
+            element.second.printWhenUpdated();
     }
 }
 
@@ -42,6 +45,9 @@ void List::list(const settings::Status& status)
             std::cout << "ID: " << element.first << '\n';
             std::cout << "task: " << element.second.getDescript() << '\n';
             std::cout << "status: " << settings::status_name[element.second.getStatus()] << "\n\n";
+            element.second.printWhenCreated();
+            if (element.second.getUpdated())
+                element.second.printWhenUpdated();
         }
     }
 }
